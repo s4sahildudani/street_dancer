@@ -62,7 +62,7 @@ export default function AboutUs() {
           </p>
           <p className={styles.storyText}>
             Our journey began with a simple idea: to create a welcoming space where people of all ages 
-            and backgrounds could discover the joy of movement. Today, we're proud to have taught 
+            and backgrounds could discover the joy of movement. Today, we&apos;re proud to have taught 
             thousands of students and helped them find their unique dance voice.
           </p>
         </div>
@@ -128,7 +128,7 @@ export default function AboutUs() {
             <strong>Creativity:</strong> We encourage artistic expression and innovative choreography.
           </div>
           <div className={styles.valueItem}>
-            <strong>Community:</strong> We build lasting relationships and support each other's growth.
+            <strong>Community:</strong> We build lasting relationships and support each other&apos;s growth.
           </div>
           <div className={styles.valueItem}>
             <strong>Fun:</strong> We believe learning should be enjoyable and fulfilling.

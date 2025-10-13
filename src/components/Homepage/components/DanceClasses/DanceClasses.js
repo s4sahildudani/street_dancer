@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import Image from 'next/image'
 import styles from './DanceClasses.module.css'
 import { getDanceClasses } from '../../../../app/NodeApi/NodeApi'
 
@@ -54,15 +55,20 @@ function DanceClasses() {
       <div className={styles.grid}>
         {searched && !loading && classes.length === 0 && (
           <p style={{ gridColumn: '1/-1', textAlign: 'center', color: '#888' }}>
-            No classes found for "{city}"
+            No classes found for &quot;{city}&quot;
           </p>
         )}
         {classes.map((cls, index) => (
           <div key={index} className={styles.card} style={{ borderTop: '4px solid #667eea', boxShadow: '0 4px 20px rgba(102,126,234,0.07)' }}>
             <h3 style={{ color: '#764ba2', marginBottom: '0.5rem' }}>{cls.class_name}</h3>
-            {/* <p className={styles.instructor}><span style={{ fontWeight: 600 }}>Instructor:</span> {cls.instructor}</p>
-            <p className={styles.schedule}><span style={{ fontWeight: 600 }}>Schedule:</span> {cls.schedule}</p>
-            <p className={styles.level}><span style={{ fontWeight: 600 }}>Level:</span> {cls.level}</p> */}
+            <Image
+              src={cls.image_url || 'https://images.unsplash.com/photo-1604312975862-d1fba70e1e0c?w=800'}
+              alt={cls.dance_name}
+              width={80}
+              height={80}
+              className={styles.emoji}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
+            />
             <p style={{ margin: '0.5rem 0', color: '#667eea', fontWeight: 500 }}>Location: {cls.city || city}</p>
             <button className={styles.button}>Join Class</button>
           </div>
@@ -73,4 +79,3 @@ function DanceClasses() {
 }
 
 export default DanceClasses
-

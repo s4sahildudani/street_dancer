@@ -1,7 +1,8 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import styles from './Instructors.module.css';
 import { getInstructors } from '@/app/NodeApi/NodeApi';
+import Image from 'next/image';
 
 const InstructorCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -32,9 +33,9 @@ const InstructorCarousel = () => {
   const totalPages = Math.ceil(instructors.length / itemsPerPage);
   const showCarousel = instructors.length > 3;
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % totalPages);
-  };
+  }, [totalPages]);
 
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev - 1 + totalPages) % totalPages);
@@ -59,7 +60,7 @@ const InstructorCarousel = () => {
       const interval = setInterval(nextSlide, 5000);
       return () => clearInterval(interval);
     }
-  }, [showCarousel]);
+  }, [showCarousel, nextSlide]);
 
   const handleSeeDetails = (instructor) => {
     setSelectedInstructor(instructor);
@@ -119,10 +120,12 @@ const InstructorCarousel = () => {
             {getCurrentInstructors().map((instructor) => (
               <div key={instructor.id} className={styles.instructorCard}>
                 <div className={styles.imageContainer}>
-                  <img 
+                  <Image 
                     src={instructor.imageUrl || '/default-instructor.jpg'} 
                     alt={instructor.instructor}
                     className={styles.instructorImage}
+                    width={300}
+                    height={300}
                   />
                   <div className={styles.ratingBadge}>
                     {renderStars(instructor.rating || 5)}

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { getDanceForms } from '../../../../app/NodeApi/NodeApi'
-
+import Image from 'next/image'
 function DanceStyles() {
   const [danceStyles, setDanceStyles] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
@@ -91,10 +91,12 @@ function DanceStyles() {
                 style={{ ...styles.card, width: getCardWidth() }}
               >
                 <div style={styles.imageWrapper}>
-                  <img
+                  <Image
                     src={style.image_url || 'https://images.unsplash.com/photo-1604312975862-d1fba70e1e0c?w=800'}
                     alt={style.dance_name}
                     style={styles.image}
+                    layout="fill"
+                    objectFit="cover"
                   />
                   <div style={styles.imageOverlay}></div>
                 </div>
