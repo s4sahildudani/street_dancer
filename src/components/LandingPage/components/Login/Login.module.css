@@ -1,0 +1,245 @@
+/* LoginPage.module.css */
+.body{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.pageContainer {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.authContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  min-height: 70vh;
+}
+
+.authContent {
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.authHeader {
+  margin-bottom: 2rem;
+}
+
+.authTitle {
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.accent {
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.authDescription {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formInput {
+  padding: 1rem 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.formInput::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.primaryBtn {
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primaryBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+}
+
+.authBtn {
+  width: 100%;
+}
+
+.authToggle {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.toggleBtn {
+  background: none;
+  border: none;
+  color: #feca57;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.toggleBtn:hover {
+  color: '#ff6b66b';
+}
+
+.authVisual {
+  flex: 1;
+  position: relative;
+  height: 600px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.backgroundImage {
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.imageWrapper:hover .backgroundImage {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(102, 126, 234, 0.6),
+    rgba(118, 75, 162, 0.6)
+  );
+  z-index: 1;
+}
+
+.floatingElements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.musicNote {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 2.5rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.note1 {
+  top: 20%;
+  left: 20%;
+  animation: float1 3s ease-in-out infinite;
+}
+
+.note2 {
+  top: 40%;
+  right: 25%;
+  animation: float2 4s ease-in-out infinite;
+}
+
+.note3 {
+  bottom: 30%;
+  left: 30%;
+  animation: float3 3.5s ease-in-out infinite;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-20px) rotate(10deg); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-30px) rotate(-15deg); }
+}
+
+@keyframes float3 {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-25px) rotate(20deg); }
+}
+
+.message {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(-10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .authContainer {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .authVisual {
+    height: 300px;
+    order: -1;
+  }
+}

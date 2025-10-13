@@ -1,0 +1,328 @@
+/* AboutUs.module.css */
+.container {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 20px;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #ff6b6b 0%, #feca57 50%, #48dbfb 100%);
+  color: white;
+  text-align: center;
+  padding: 80px 0;
+  border-radius: 20px;
+  margin-bottom: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+}
+
+.title {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0.95;
+}
+
+/* Section Titles */
+.sectionTitle {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Story Section */
+.storySection {
+  margin-bottom: 80px;
+  background: #f8f9fa;
+  padding: 60px 40px;
+  border-radius: 15px;
+}
+
+.storyContent {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.storyText {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 25px;
+  line-height: 1.8;
+}
+
+/* Features Section */
+.featuresSection {
+  margin-bottom: 80px;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.featureCard {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.featureIcon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.featureTitle {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.featureDescription {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Mission Section */
+.missionSection {
+  margin-bottom: 80px;
+}
+
+.missionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.missionCard {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 40px 30px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.missionTitle {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.missionText {
+  font-size: 1rem;
+  line-height: 1.7;
+  opacity: 0.95;
+}
+
+/* Dance Styles Section */
+.stylesSection {
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.stylesGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.styleTag {
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.styleTag:hover {
+  transform: scale(1.05);
+}
+
+/* Values Section */
+.valuesSection {
+  margin-bottom: 80px;
+  background: #f8f9fa;
+  padding: 60px 40px;
+  border-radius: 15px;
+}
+
+.valuesList {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.valueItem {
+  background: white;
+  padding: 25px 30px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+  font-size: 1.1rem;
+  color: #555;
+  border-left: 4px solid #ff6b6b;
+}
+
+.valueItem strong {
+  color: #333;
+}
+
+/* Call to Action Section */
+.ctaSection {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: white;
+  padding: 60px 40px;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.ctaContent {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.ctaTitle {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.ctaText {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+  line-height: 1.7;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ctaButton {
+  background: #ff6b6b;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ctaButtonSecondary {
+  background: transparent;
+  color: white;
+  padding: 15px 30px;
+  border: 2px solid white;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.ctaButton:hover,
+.ctaButtonSecondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.ctaButtonSecondary:hover {
+  background: white;
+  color: #2c3e50;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 20px;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .storySection,
+  .valuesSection,
+  .ctaSection {
+    padding: 40px 20px;
+  }
+
+  .missionGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .missionCard {
+    min-width: unset;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ctaButton,
+  .ctaButtonSecondary {
+    width: 200px;
+    text-align: center;
+  }
+}
