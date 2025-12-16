@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:4000';
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000';
 
 export const loginUser = async (credentials) => {
   try {
@@ -146,7 +146,7 @@ export const getInstructors = async () => {
 
 export const getDanceForms = async () => {
   try {
-    const response = await fetch('http://localhost:4000/danceforms')
+    const response = await fetch(`${BASE_URL}/danceforms`)
     const data = await response.json()
     return data
   } catch (error) {
