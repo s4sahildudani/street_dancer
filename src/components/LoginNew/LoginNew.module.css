@@ -1,0 +1,176 @@
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  max-width: 1600px;
+  margin: auto;
+}
+
+.left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  background: #0b0b0b;
+}
+
+.formWrapper {
+  width: 100%;
+  max-width: 510px;
+}
+
+.heading {
+  font-size: 3rem;
+  color: #fff;
+  font-weight: 700;
+  margin-top: 4rem;
+}
+@media (max-width: 768px) {
+  .heading {
+     margin-top: 3rem;
+  }
+}
+.subText {
+  color: #aaa;
+  margin: 1rem 0 2.5rem;
+}
+
+.error {
+  color: #ff4444;
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(255, 68, 68, 0.1);
+  border: 1px solid rgba(255, 68, 68, 0.2);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.field label {
+  color: #fff;
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.field input {
+  width: 93.5%;
+  height: 52px;
+  padding: 0 15px;
+  border-radius: 12px;
+  background: #111;
+  border: 1px solid #222;
+  color: #fff;
+}
+@media (max-width: 768px) {
+  .field input {
+    width: 89%;
+  }
+}
+.passwordBox {
+  display: flex;
+}
+
+.passwordBox input {
+  flex: 1;
+  border-radius: 12px 0 0 12px;
+}
+
+.passwordBox button {
+  padding: 0 16px;
+  background: #111;
+  border: 1px solid #222;
+  border-left: none;
+  border-radius: 0 12px 12px 0;
+  color: #fff;
+  cursor: pointer;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.options a {
+  color: #fff;
+}
+
+.remember {
+  color: #aaa;
+}
+
+.loginBtn {
+  height: 56px;
+  background: #fff;
+  color: #000;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.loginBtn:hover {
+  transform: scale(0.98);
+}
+
+.signup {
+  text-align: center;
+  color: #777;
+}
+
+.signup a {
+  color: #fff;
+  font-weight: 700;
+}
+
+.right {
+  width: 50%;
+  display: none;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .right {
+    display: block;
+  }
+}
+
+.featured {
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.6s;
+}
+
+.featured:hover {
+  transform: scale(1.01);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, black, rgba(0,0,0,0.2), transparent);
+}
+
+.featuredContent {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 2.5rem;
+  color: #fff;
+  max-width: 80%;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.3);
+  margin-bottom: 1rem;
+}

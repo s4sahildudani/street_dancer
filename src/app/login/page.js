@@ -1,5 +1,5 @@
 import React from 'react'
-import LoginPage from '@/components/LandingPage/components/Login/Login'
+import LoginPage from '@/components/LoginNew/LoginNew'
 function page() {
   return (
     <div><LoginPage /></div>

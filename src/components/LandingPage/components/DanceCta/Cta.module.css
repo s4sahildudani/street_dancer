@@ -1,0 +1,61 @@
+.section {
+  padding: 120px 0;
+  background: #000;
+}
+
+.container {
+  text-align: center;
+  position: relative;
+  padding: 80px 40px !important;
+}
+
+.cornerTL {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.cornerBR {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  border-right: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.title {
+  font-weight: 900 !important;
+  letter-spacing: -3px !important;
+  margin-bottom: 24px !important;
+  text-transform: uppercase;
+  line-height: 0.9 !important;
+  color: #fff;;
+}
+
+.outline {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.5);
+  color: transparent;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 56px !important;
+  font-weight: 300 !important;
+  font-size: 1.2rem !important;
+}
+
+.ctaBtn {
+  background: #fff !important;
+  color: #000 !important;
+  padding: 16px 40px !important;
+  font-weight: 900 !important;
+  border-radius: 0 !important;
+  font-size: 1rem !important;
+  letter-spacing: 1px !important;
+}

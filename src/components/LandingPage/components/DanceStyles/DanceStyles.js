@@ -32,9 +32,9 @@ function DanceStyles() {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  const totalPages = Math.ceil(danceStyles.length / itemsPerPage)
+  const totalPages = Math.ceil(danceStyles?.length / itemsPerPage)
   const startIndex = currentPage * itemsPerPage
-  const visibleStyles = danceStyles.slice(startIndex, startIndex + itemsPerPage)
+  const visibleStyles = danceStyles?.slice(startIndex, startIndex + itemsPerPage)
 
   const nextPage = () => {
     setCurrentPage(prev => (prev >= totalPages - 1 ? 0 : prev + 1))
@@ -51,7 +51,7 @@ function DanceStyles() {
     return '400px'
   }
 
-  if (danceStyles.length === 0) {
+  if (danceStyles?.length === 0) {
     return (
       <section style={styles.section}>
         <div style={styles.container}>
@@ -73,7 +73,7 @@ function DanceStyles() {
         </div>
 
         <div style={styles.carouselFlex}>
-          {danceStyles.length > itemsPerPage && (
+          {danceStyles?.length > itemsPerPage && (
             <button
               style={{ ...styles.navButton, left: 0 }}
               onClick={prevPage}
@@ -85,7 +85,7 @@ function DanceStyles() {
           )}
 
           <div style={styles.cardsGrid}>
-            {visibleStyles.map((style, idx) => (
+            {visibleStyles?.map((style, idx) => (
               <div
                 key={idx}
                 style={{ ...styles.card, width: getCardWidth() }}
@@ -113,7 +113,7 @@ function DanceStyles() {
             ))}
           </div>
 
-          {danceStyles.length > itemsPerPage && (
+          {danceStyles?.length > itemsPerPage && (
             <button
               style={{ ...styles.navButton, right: 0 }}
               onClick={nextPage}
@@ -125,7 +125,7 @@ function DanceStyles() {
           )}
         </div>
 
-        {danceStyles.length > itemsPerPage && (
+        {danceStyles?.length > itemsPerPage && (
           <div style={styles.pageIndicator}>
             <span style={styles.pageText}>{currentPage + 1} / {totalPages}</span>
           </div>

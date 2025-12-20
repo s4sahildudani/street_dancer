@@ -24,42 +24,32 @@ export const loginUser = async (credentials) => {
 
 export const registerUser = async (userData) => {
   try {
-    // First check if user already exists
-    const existingUsers = await fetch(`${BASE_URL}/users`);
-    const users = await existingUsers.json();
-    
+    // For demo purposes, using localStorage instead of API
+    const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+
     const userExists = users.find(user => user.email === userData.email);
     if (userExists) {
       throw new Error('User with this email already exists');
     }
 
-    // Format the data according to the API requirements
-    const formattedData = {
+    // Create new user
+    const newUser = {
+      id: Date.now(), // Simple ID generation
       name: userData.name,
       email: userData.email,
       phone: userData.phone,
       password: userData.password,
-      confirmPassword: userData.password // Add this line to match API expectations
+      createdAt: new Date().toISOString()
     };
 
-    const response = await fetch(`${BASE_URL}/users`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formattedData)
-    });
+    // Add to users array
+    users.push(newUser);
+    localStorage.setItem('registeredUsers', JSON.stringify(users));
 
-    const data = await response.json();
-    
-    if (!response.ok) {
-      throw new Error(data.error || 'Failed to register user');
-    }
-
-    return { 
-      success: true, 
+    return {
+      success: true,
       message: 'Registration successful! Please login.',
-      user: data 
+      user: newUser
     };
 
   } catch (error) {
@@ -70,14 +60,14 @@ export const registerUser = async (userData) => {
 
 export const checkUser = async (credentials) => {
   try {
-    const response = await fetch(`${BASE_URL}/users`);
-    const users = await response.json();
-    
-    const user = users.find(user => 
-      user.email === credentials.email && 
+    // For demo purposes, using localStorage instead of API
+    const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+
+    const user = users.find(user =>
+      user.email === credentials.email &&
       user.password === credentials.password
     );
-    
+
     if (user) {
       return { success: true, user };
     } else {
@@ -146,9 +136,9 @@ export const getInstructors = async () => {
 
 export const getDanceForms = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/danceforms`)
-    const data = await response.json()
-    return data
+    // const response = await fetch(`${BASE_URL}/danceforms`)
+    // const data = await response.json()
+    // return data
   } catch (error) {
     console.error('Fetch dance forms error:', error)
     return []

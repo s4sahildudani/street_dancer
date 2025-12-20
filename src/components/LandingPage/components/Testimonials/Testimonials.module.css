@@ -1,0 +1,67 @@
+.section {
+  padding: 120px 0;
+  background: #0a0a0a;
+}
+
+.title {
+  font-size: 2.6rem;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 70px;
+  letter-spacing: 2px;
+}
+
+.title span {
+  color: rgba(255,255,255,0.35);
+}
+
+/* CARD */
+.reviewCard {
+  background: linear-gradient(180deg, #111, #0c0c0c);
+  padding: 40px;
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex;
+  flex-direction: column;
+  min-height: 340px; /* ⭐ IMPORTANT */
+}
+
+/* STARS */
+.stars {
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+/* TEXT */
+.quote {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 30px;
+  font-style: italic;
+}
+
+/* AUTHOR */
+.author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: auto; /* ⭐ pushes author to bottom cleanly */
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.avatar {
+  width: 46px !important;
+  height: 46px !important;
+  filter: grayscale(1);
+}
+
+.name {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.location {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+}
