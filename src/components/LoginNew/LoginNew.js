@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import styles from './LoginNew.module.css';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
-import { checkUser } from '../../app/NodeApi/NodeApi';
+import { loginUser } from '../../app/NodeApi/NodeApi';
 import { useRouter } from 'next/navigation';
 const AuthLayout = () => {
   const router = useRouter();
@@ -23,11 +23,11 @@ const AuthLayout = () => {
     setError('');
 
     try {
-      const response = await checkUser({ email, password });
-      if (response.success) {
+      const response = await loginUser({ email, password });
+      if (response.user) {
         const userData = {
           ...response.user,
-          name: response.user.name || email.split('@')[0]
+          name: response.user.name || response.user.username || email.split('@')[0]
         };
         localStorage.setItem('user', JSON.stringify(userData));
         router.push('/home');

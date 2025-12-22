@@ -1,8 +1,74 @@
-const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000';
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://street-dancer-backend.vercel.app';
+
+export const addUser = async (userData) => {
+  try {
+    const response = await fetch(`${BASE_URL}/users`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    });
+    const data = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(data.message || 'User creation failed');
+    }
+    
+    return data;
+  } catch (error) {
+    console.error('Add user error:', error);
+    throw error;
+  }
+};
+
+export const signupUser = async (userData) => {
+  try {
+    const response = await fetch(`${BASE_URL}/users/signup`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    });
+    const data = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(data.message || 'OTP send failed');
+    }
+    
+    return data;
+  } catch (error) {
+    console.error('Signup error:', error);
+    throw error;
+  }
+};
+
+export const verifyUser = async (email, otp) => {
+  try {
+    const response = await fetch(`${BASE_URL}/users/verify`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, otp }),
+    });
+    const data = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(data.message || 'Verification failed');
+    }
+    
+    return data;
+  } catch (error) {
+    console.error('Verification error:', error);
+    throw error;
+  }
+};
 
 export const loginUser = async (credentials) => {
   try {
-    const response = await fetch(`${BASE_URL}/auth/login`, {
+    const response = await fetch(`${BASE_URL}/users/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

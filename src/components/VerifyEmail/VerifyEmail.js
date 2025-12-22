@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./VerifyEmail.module.css";
 
-const VerifyEmail = ({ email }) => {
+const VerifyEmail = ({ email, onVerify }) => {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [loading, setLoading] = useState(false);
 
@@ -18,14 +18,17 @@ const VerifyEmail = ({ email }) => {
     }
   };
 
-  const handleVerify = () => {
+  const handleVerify = async () => {
     if (otp.join("").length !== 6) return;
     setLoading(true);
 
-    setTimeout(() => {
+    try {
+      await onVerify(otp.join(""));
+    } catch (error) {
+      alert("Verification failed");
+    } finally {
       setLoading(false);
-      alert("OTP Verified (demo)");
-    }, 1500);
+    }
   };
 
   return (

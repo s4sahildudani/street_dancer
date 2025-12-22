@@ -6,9 +6,9 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Footer from "../Footer/Footer";
 import Navbar from '../Navbar/Navbar';
-import { registerUser } from '../../app/NodeApi/NodeApi';
-import { useRouter } from 'next/navigation';
+import { addUser, signupUser, verifyUser } from '../../app/NodeApi/NodeApi';
 import VerifyEmail from '../VerifyEmail/VerifyEmail';
+import { useRouter } from 'next/navigation';
 const AuthPage = () => {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
@@ -35,35 +35,29 @@ const AuthPage = () => {
         throw new Error('Please enter a valid 10-digit phone number');
       }
 
-      const registrationData = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        password: formData.password,
-      };
-
-      const response = await registerUser(registrationData);
-      
-      if (response.success) {
-        setError('Registration successful! Please login with your credentials.');
-        // Clear form
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          password: "",
-          confirmPassword: "",
-          agreeToTerms: false,
-        });
-        // Redirect to login after a short delay
-        setTimeout(() => {
-          router.push('/login');
-        }, 2000);
+      const addResponse = await addUser(formData);
+      if (addResponse) {
+        const otpResponse = await signupUser(formData);
+        if (otpResponse) {
+          setShowVerification(true);
+        }
       }
     } catch (error) {
       setError(error.message || 'Something went wrong');
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleVerify = async (otp) => {
+    try {
+      const response = await verifyUser(formData.email, otp);
+      if (response) {
+        // Assume success, redirect to login
+        router.push('/login');
+      }
+    } catch (error) {
+      setError(error.message || 'Verification failed');
     }
   };
 
@@ -97,6 +91,7 @@ const AuthPage = () => {
             </div>
           )}
 
+          {!showVerification && (
           <form className={styles.form} onSubmit={handleSubmit}>
           <input
             placeholder="Full Name"
@@ -181,6 +176,9 @@ const AuthPage = () => {
             Already a user? <a href="/login">Login</a>
           </p>
         </form>
+          )}
+
+          {showVerification && <VerifyEmail email={formData.email} onVerify={handleVerify} />}
       </div>
 
       {/* RIGHT – HERO */}
