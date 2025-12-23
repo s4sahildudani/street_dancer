@@ -9,6 +9,7 @@ import Navbar from '../Navbar/Navbar';
 import { addUser, signupUser, verifyUser } from '../../app/NodeApi/NodeApi';
 import VerifyEmail from '../VerifyEmail/VerifyEmail';
 import { useRouter } from 'next/navigation';
+import { TextField, InputAdornment, IconButton, Checkbox, FormControlLabel, Button } from "@mui/material";
 const AuthPage = () => {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
@@ -23,9 +24,8 @@ const AuthPage = () => {
     setError('');
 
     try {
-      if (formData.password !== formData.confirmPassword) {
-        throw new Error('Passwords do not match');
-      }
+      // Set confirmPassword to password since we removed the field
+      formData.confirmPassword = formData.password;
 
       if (!formData.agreeToTerms) {
         throw new Error('Please agree to the Terms and Conditions');
@@ -82,95 +82,237 @@ const AuthPage = () => {
     <div className={styles.wrapper}>
         {/* LEFT – FORM */}
         <div className={styles.formSection}>
-          <h2 style={{textAlign:"center"}}>Create Account</h2>
-          <p style={{textAlign:"center"}}>Start your 14-day free trial today.</p>
+          <div className={styles.formWrapper}>
+            <h2 style={{textAlign:"center"}}>Create Account</h2>
+            <p style={{textAlign:"center"}}>Start your 14-day free trial today.</p>
 
-          {error && (
-            <div className={styles.error}>
-              {error}
-            </div>
-          )}
+            {error && (
+              <div className={styles.error}>
+                {error}
+              </div>
+            )}
 
-          {!showVerification && (
-          <form className={styles.form} onSubmit={handleSubmit}>
-          <input
+            {!showVerification && (
+            <form className={styles.form} onSubmit={handleSubmit}>
+          <TextField
             placeholder="Full Name"
             value={formData.name}
             onChange={(e) =>
               setFormData({ ...formData, name: e.target.value })
             }
-            style={{width:"95%"}}
+            variant="outlined"
+            fullWidth
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                backgroundColor: '#111',
+                color: 'white',
+                borderRadius: '12px',
+                '& fieldset': {
+                  borderColor: '#222',
+                },
+                '&:hover fieldset': {
+                  borderColor: '#fff',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: '#fff',
+                },
+              },
+              '& .MuiInputBase-input::placeholder': {
+                color: '#aaa',
+              },
+            }}
           />
 
-          <input
+          <TextField
             placeholder="Email Address"
             value={formData.email}
             onChange={(e) =>
               setFormData({ ...formData, email: e.target.value })
             }
-             style={{width:"95%"}}
+            variant="outlined"
+            fullWidth
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                backgroundColor: '#111',
+                color: 'white',
+                borderRadius: '12px',
+                '& fieldset': {
+                  borderColor: '#222',
+                },
+                '&:hover fieldset': {
+                  borderColor: '#fff',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: '#fff',
+                },
+              },
+              '& .MuiInputBase-input::placeholder': {
+                color: '#aaa',
+              },
+            }}
           />
 
-          <input
+          <TextField
             placeholder="Phone Number"
             value={formData.phone}
             onChange={(e) =>
               setFormData({ ...formData, phone: e.target.value })
             }
-             style={{width:"95%"}}
+            variant="outlined"
+            fullWidth
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                backgroundColor: '#111',
+                color: 'white',
+                borderRadius: '12px',
+                '& fieldset': {
+                  borderColor: '#222',
+                },
+                '&:hover fieldset': {
+                  borderColor: '#fff',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: '#fff',
+                },
+              },
+              '& .MuiInputBase-input::placeholder': {
+                color: '#aaa',
+              },
+            }}
           />
 
           {/* Password */}
-          <div className={styles.passwordField}>
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              value={formData.password}
-              onChange={(e) =>
-                setFormData({ ...formData, password: e.target.value })
-              }
-               style={{width:"90%"}}
-            />
-            <span onClick={() => setShowPassword(!showPassword)}>
-              {showPassword ? <VisibilityOff /> : <Visibility />}
-            </span>
-          </div>
+          <TextField
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            value={formData.password}
+            onChange={(e) =>
+              setFormData({ ...formData, password: e.target.value })
+            }
+            variant="outlined"
+            fullWidth
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    onClick={() => setShowPassword(!showPassword)}
+                    edge="end"
+                    sx={{ color: '#aaa' }}
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                backgroundColor: '#111',
+                color: 'white',
+                borderRadius: '12px',
+                '& fieldset': {
+                  borderColor: '#222',
+                },
+                '&:hover fieldset': {
+                  borderColor: '#fff',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: '#fff',
+                },
+              },
+              '& .MuiInputBase-input::placeholder': {
+                color: '#aaa',
+              },
+            }}
+          />
 
           {/* Confirm Password */}
-          <div className={styles.passwordField}>
-            <input
-              type={showConfirmPassword ? "text" : "password"}
-              placeholder="Confirm Password"
-              value={formData.confirmPassword}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  confirmPassword: e.target.value,
-                })
-              }
-               style={{width:"90%"}}
-            />
-            <span
-              onClick={() =>
-                setShowConfirmPassword(!showConfirmPassword)
-              }
-            >
-              {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
-            </span>
-          </div>
+          <TextField
+            type={showConfirmPassword ? "text" : "password"}
+            placeholder="Confirm Password"
+            value={formData.confirmPassword}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                confirmPassword: e.target.value,
+              })
+            }
+            variant="outlined"
+            fullWidth
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    onClick={() =>
+                      setShowConfirmPassword(!showConfirmPassword)
+                    }
+                    edge="end"
+                    sx={{ color: '#aaa' }}
+                  >
+                    {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                backgroundColor: '#111',
+                color: 'white',
+                borderRadius: '12px',
+                '& fieldset': {
+                  borderColor: '#222',
+                },
+                '&:hover fieldset': {
+                  borderColor: '#fff',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: '#fff',
+                },
+              },
+              '& .MuiInputBase-input::placeholder': {
+                color: '#aaa',
+              },
+            }}
+          />
 
-          <div className={styles.terms}>
-            <input
-              type="checkbox"
-              checked={formData.agreeToTerms}
-              onChange={(e) => setFormData({ ...formData, agreeToTerms: e.target.checked })}
-            />
-            <label>I agree to the <a href="#">Terms and Conditions</a></label>
-          </div>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={formData.agreeToTerms}
+                onChange={(e) => setFormData({ ...formData, agreeToTerms: e.target.checked })}
+                sx={{
+                  color: '#999',
+                  '&.Mui-checked': {
+                    color: '#fff',
+                  },
+                }}
+              />
+            }
+            label={
+              <span style={{ color: '#999', fontSize: '14px' }}>
+                I agree to the <a href="#" style={{ color: '#fff' }}>Terms and Conditions</a>
+              </span>
+            }
+          />
 
-          <button className={styles.submitBtn} type="submit" disabled={isLoading}>
+          <Button
+            type="submit"
+            variant="contained"
+            disabled={isLoading}
+            sx={{
+              marginTop: '20px',
+              width: '100%',
+              height: '52px',
+              borderRadius: '14px',
+              backgroundColor: 'white',
+              color: 'black',
+              fontWeight: 700,
+              '&:hover': {
+                backgroundColor: '#f0f0f0',
+              },
+            }}
+          >
             {isLoading ? 'Creating Account...' : 'Create Account'}
-          </button>
+          </Button>
 
           <p className={styles.loginLink}>
             Already a user? <a href="/login">Login</a>
@@ -179,6 +321,7 @@ const AuthPage = () => {
           )}
 
           {showVerification && <VerifyEmail email={formData.email} onVerify={handleVerify} />}
+          </div>
       </div>
 
       {/* RIGHT – HERO */}

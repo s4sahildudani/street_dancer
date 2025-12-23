@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./VerifyEmail.module.css";
+import MarkEmailUnread from "@mui/icons-material/MarkEmailUnread";
 
 const VerifyEmail = ({ email, onVerify }) => {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
@@ -36,7 +37,7 @@ const VerifyEmail = ({ email, onVerify }) => {
       <div className={styles.card}>
         {/* Icon */}
         <div className={styles.iconWrapper}>
-          <span className="material-symbols-outlined">mark_email_unread</span>
+          <MarkEmailUnread fontSize="large" />
         </div>
 
         {/* Text */}
